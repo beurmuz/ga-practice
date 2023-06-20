@@ -1,13 +1,31 @@
-import requests
+# 크롤링시 필요한 라이브러리 import
 from bs4 import BeautifulSoup
+import requests
+import re
+import datetime
+from tqdm import tqdm
 
-url = 'https://ridibooks.com/category/new-releases/2200'
-response = requests.get(url)
-response.encoding = 'utf-8'
-html = response.text
+# ConnectionError 방지용
+headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36 Whale/3.21.192.18"}
 
-soup = BeautifulSoup(html, 'html.parser')
 
-bookservices = soup.select('.fig-rs5q24')
-for no, book in enumerate(bookservices, 1):
-    print(no, book.text.strip())
+url = "https://search.naver.com/search.naver?where=news&sm=tab_pge&query=식케이&start=1"
+news = requests.get(url, headers=headers)
+newsHtml = BeautifulSoup(news.text,"html.parser")
+totalNews = newsHtml.select('div.news_area')
+
+newsData = []
+
+for i in range(len(totalNews)):
+  m = totalNews[i]
+  newsData.append({
+      "id": i,
+      "title": m.select_one('a.news_tit')['href'],
+      "date": m.select_one('span.info').text,
+      "content": m.select_one('div.dsc_wrap > a.api_txt_lines.dsc_txt_wrap').text,
+      "date": m.select_one('span.info').text,
+      "media": m.select_one('a.info.press').text
+  })
+  # totalURL.append(m.select_one('a.news_tit')['href'])
+
+print(newsData)
