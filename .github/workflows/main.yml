@@ -25,7 +25,7 @@ jobs:
         git add .
         git commit -m "Run crawler and update current News Data"
     - name: Push changes
-      uses: ad-m/github-push-action@main
+      uses: beurmuz/ga-practice@main
       with:
         # branch: "master"
         github_token: ${{ secrets.GITHUB_TOKEN }}
