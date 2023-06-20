@@ -33,4 +33,6 @@ jobs:
       uses: ad-m/github-push-action@master
       with:
         # branch: "master"
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+        # github_token: ${{ secrets.GITHUB_TOKEN }}
+        repository: https://github.com/beurmuz/ga-practice.git
+        directory: .
