@@ -1,9 +1,6 @@
 # 크롤링시 필요한 라이브러리 import
 from bs4 import BeautifulSoup
 import requests
-import re
-import datetime
-from tqdm import tqdm
 
 # ConnectionError 방지용
 headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36 Whale/3.21.192.18"}
