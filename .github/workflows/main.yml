@@ -34,5 +34,4 @@ jobs:
       with:
         # branch: "master"
         # github_token: ${{ secrets.GITHUB_TOKEN }}
-        repository: https://github.com/beurmuz/ga-practice.git
         directory: .
