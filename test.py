@@ -19,13 +19,12 @@ for i in range(len(totalNews)):
   m = totalNews[i]
   newsData.append({
       "id": i,
-      "title": m.select_one('a.news_tit')['href'],
-      "date": m.select_one('span.info').text,
+      "title": m.select_one('a.news_tit').text,
       "content": m.select_one('div.dsc_wrap > a.api_txt_lines.dsc_txt_wrap').text,
+      "link": m.select_one('a.news_tit')['href'],
       "date": m.select_one('span.info').text,
       "media": m.select_one('a.info.press').text
   })
-  # totalURL.append(m.select_one('a.news_tit')['href'])
 
 # json 형식으로 만들기
 with open('data.js', "w", encoding="UTF-8-sig") as f_write:
