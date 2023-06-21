@@ -11,7 +11,7 @@ jobs:
     - uses: actions/checkout@v2
       with:
         # 개인 토큰을 사용할 것인지 말 것인지
-        persist-credentials: false 
+        persist-credentials: true 
         
     - name: 1. pip 업그레이드
       run: python -m pip install --upgrade pip
